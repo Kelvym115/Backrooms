@@ -13,6 +13,9 @@ TagManager:
   - SW
   - E
   - W
+  - Ladder
+  - Platform
+  - Water
   layers:
   - Default
   - TransparentFX
