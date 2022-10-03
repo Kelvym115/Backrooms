@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Z
+  - N
+  - NE
+  - NW
+  - S
+  - SE
+  - SW
+  - E
+  - W
   layers:
   - Default
   - TransparentFX
