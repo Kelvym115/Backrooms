@@ -7,7 +7,7 @@ public class PresenceZoneBehaviour : MonoBehaviour
     [Header("General Settings")]
     
     public GameObject presenceZone;
-    public int zoneSize = 5;
+    public float zoneSize = 5f;
 
     [Space(10)]
 

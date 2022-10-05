@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerZoneDet : MonoBehaviour
 {
     public GameObject presenceZone;
-    public int zoneSize = 5;
+    public float zoneSize = 5f;
     public GameObject[] zones;
 
     // Start is called before the first frame update
