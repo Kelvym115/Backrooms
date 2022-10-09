@@ -838,6 +838,7 @@ GameObject:
   - component: {fileID: 1243949599443127702}
   - component: {fileID: 8915892768810483566}
   - component: {fileID: 1624038731275055461}
+  - component: {fileID: 3685378388351425859}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -990,6 +991,19 @@ MonoBehaviour:
   redOffset: {x: 0, y: 0}
   blueOffset: {x: 0, y: 0}
   greenOffset: {x: 0, y: 0}
+--- !u!114 &3685378388351425859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234082125484969297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bd839781d1cda4695a168b794c6006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
 --- !u!1 &3234083094795209679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,8 +3022,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3133489685523057022}
   - component: {fileID: 5704892996000672156}
-  - component: {fileID: 8407644477091965897}
   - component: {fileID: 2856109676246244095}
+  - component: {fileID: 8407644477091965897}
   m_Layer: 2
   m_Name: Detector
   m_TagString: Untagged
@@ -3053,33 +3067,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.09156084, y: 0.21895075, z: 0.16627216}
   m_Center: {x: 0.007457018, y: -1.1395433, z: 0.04845953}
---- !u!114 &8407644477091965897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6397768185104429639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ddac9af2f79946439d51ea63507a2dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  presenceZone: {fileID: 0}
-  zoneSize: 49.5
-  zones:
-  - {fileID: 7937203371668634290, guid: 66e62bf9a6b7ba149b48e8141111508c, type: 3}
-  - {fileID: 7937203371668634290, guid: a76c26feb2e1fc6408c80abdbaa916c5, type: 3}
-  - {fileID: 7937203371668634290, guid: db47196bdb09b784ead484b20e87a837, type: 3}
-  - {fileID: 7937203371668634290, guid: d5ec69d61f5aa9a41ab8b19f86e24611, type: 3}
-  - {fileID: 7937203371668634290, guid: d8331cf2fa545c0489c778885a361ae1, type: 3}
-  - {fileID: 7937203371668634290, guid: c2f07f7a56320834eba375464af757ec, type: 3}
-  - {fileID: 7937203371668634290, guid: 29bdd7c8ae8894542b3bcc7d74f2e95b, type: 3}
-  - {fileID: 7937203371668634290, guid: 4582f76d38e97d547b7d173ea93b7991, type: 3}
-  - {fileID: 7937203371668634290, guid: 762dbb5cb029e0a46a3bdc066fbce257, type: 3}
-  - {fileID: 7937203371668634290, guid: f9439e91cfcd7864f8828b55f2970017, type: 3}
-  - {fileID: 7937203371668634290, guid: 0aee6a0d53614c746853554d8fb7b69e, type: 3}
-  - {fileID: 7937203371668634290, guid: 12c59c932bc75ce4bb38ed3c96ab4388, type: 3}
 --- !u!54 &2856109676246244095
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3107,3 +3094,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8407644477091965897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397768185104429639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ddac9af2f79946439d51ea63507a2dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  presenceZone: {fileID: 0}
+  zoneSize: 49.5
+  zones:
+  - {fileID: 7937203371668634290, guid: 66e62bf9a6b7ba149b48e8141111508c, type: 3}
+  - {fileID: 7937203371668634290, guid: a76c26feb2e1fc6408c80abdbaa916c5, type: 3}
+  - {fileID: 7937203371668634290, guid: db47196bdb09b784ead484b20e87a837, type: 3}
+  - {fileID: 7937203371668634290, guid: d5ec69d61f5aa9a41ab8b19f86e24611, type: 3}
+  - {fileID: 7937203371668634290, guid: d8331cf2fa545c0489c778885a361ae1, type: 3}
+  - {fileID: 7937203371668634290, guid: c2f07f7a56320834eba375464af757ec, type: 3}
+  - {fileID: 7937203371668634290, guid: 29bdd7c8ae8894542b3bcc7d74f2e95b, type: 3}
+  - {fileID: 7937203371668634290, guid: 4582f76d38e97d547b7d173ea93b7991, type: 3}
+  - {fileID: 7937203371668634290, guid: 762dbb5cb029e0a46a3bdc066fbce257, type: 3}
+  - {fileID: 7937203371668634290, guid: f9439e91cfcd7864f8828b55f2970017, type: 3}
+  - {fileID: 7937203371668634290, guid: 0aee6a0d53614c746853554d8fb7b69e, type: 3}
+  - {fileID: 7937203371668634290, guid: 12c59c932bc75ce4bb38ed3c96ab4388, type: 3}

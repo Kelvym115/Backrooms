@@ -17,6 +17,8 @@ TagManager:
   - Platform
   - Water
   - Event
+  - DoorRight
+  - DoorLeft
   layers:
   - Default
   - TransparentFX
