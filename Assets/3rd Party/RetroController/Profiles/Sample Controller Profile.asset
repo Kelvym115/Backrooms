@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gravity: 0.55
   WaterGravityScale: 0.26
-  JumpSpeed: 0.2
+  JumpSpeed: 0
   JumpGraceTime: 5
   JumpInputTimer: 20
   WaterEdgeJumpSpeed: 0.16
@@ -26,7 +26,7 @@ MonoBehaviour:
   DuckingLerp: 1
   DuckingLerpSpeed: 8
   MaxGroundSpeed: 0.07
-  MaxGroundSprintSpeed: 0.12
+  MaxGroundSprintSpeed: 0.07
   MaxAirSpeed: 1
   MaxAirSprintSpeed: 0
   MaxWaterSpeed: 0.1

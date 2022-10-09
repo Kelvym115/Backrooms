@@ -16,6 +16,7 @@ TagManager:
   - Ladder
   - Platform
   - Water
+  - Event
   layers:
   - Default
   - TransparentFX

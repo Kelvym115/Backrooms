@@ -119,11 +119,11 @@ public class Flashback94_PostProcess : MonoBehaviour
         }
 
         // Check if the platform supports image effects
-        if (!SystemInfo.supportsImageEffects)
-        {
-            Debug.LogWarning("<color=yellow>FLASHBACK '94 WARNING:</color> Image effects are not supported on this platform!");
-            return false;
-        }
+        //if (!SystemInfo.supportsImageEffects)
+        //{
+        //    Debug.LogWarning("<color=yellow>FLASHBACK '94 WARNING:</color> Image effects are not supported on this platform!");
+        //    return false;
+        //}
 
         // Create the material if it doesn't exist
         if (colorMaterial == null)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerZoneDet : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerZoneDet : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        Debug.Log(col.gameObject.name);
         if (col.gameObject.tag == "Z")
         {
             //Do nothing yet
@@ -289,6 +291,12 @@ public class PlayerZoneDet : MonoBehaviour
             GameObject zoneClone5 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x + zoneSize,0,col.gameObject.transform.position.z + zoneSize), col.gameObject.transform.rotation) as GameObject;
             zoneClone5.transform.parent = presenceZone.transform;
             zoneClone5.tag = "NE";
+        }
+
+        if (col.gameObject.name == "Load_Backrooms")
+        {
+            Debug.Log("Tocou");
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
     }
 }
