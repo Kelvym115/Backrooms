@@ -22,6 +22,7 @@ TagManager:
   - Trash
   - Bag
   - LightPlug
+  - Door
   layers:
   - Default
   - TransparentFX

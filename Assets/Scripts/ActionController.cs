@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActionController : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class ActionController : MonoBehaviour
     private bool bagCollected;
 
     private BoxCollider outsideFloor;
+
+    private GameObject actionTextObj;
+    private Text actionText;
 
     // Light Controllers
 
@@ -44,6 +48,10 @@ public class ActionController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        actionTextObj =  GameObject.Find("ActionText");
+        actionTextObj.GetComponent<UnityEngine.UI.Text>().text = "Aperte E";
+        actionTextObj.SetActive(false);
+
         cone1 = GameObject.Find("cone1");
         light1 = GameObject.Find("light1");
         light1.SetActive(true);
@@ -99,6 +107,13 @@ public class ActionController : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1.5f))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+
+            if(hit.collider.gameObject.tag == "Bag" || hit.collider.gameObject.tag == "LightPlug" || hit.collider.gameObject.tag == "Door"){
+                actionTextObj.SetActive(true);
+                actionTextObj.GetComponent<UnityEngine.UI.Text>().text = "Aperte E";
+            } else {
+                actionTextObj.SetActive(false);
+            }
 
             if (Input.GetKeyDown("e"))
             {
@@ -173,6 +188,8 @@ public class ActionController : MonoBehaviour
                     }
                 } 
             }
+        } else {
+            actionTextObj.SetActive(false);
         }
 
         if(itemCollected != null){
