@@ -19,14 +19,17 @@ TagManager:
   - Event
   - DoorRight
   - DoorLeft
+  - Trash
+  - Bag
+  - LightPlug
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Collectibles
   - Water
   - UI
-  - 
+  - Collector
   - 
   - 
   - 
