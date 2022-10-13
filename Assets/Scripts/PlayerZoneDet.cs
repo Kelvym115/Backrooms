@@ -8,6 +8,7 @@ public class PlayerZoneDet : MonoBehaviour
     public GameObject presenceZone;
     public float zoneSize = 5f;
     public GameObject[] zones;
+    public GameObject[] sZones;
 
     // Start is called before the first frame update
     void Start()
@@ -46,9 +47,17 @@ public class PlayerZoneDet : MonoBehaviour
 
             col.gameObject.tag = "Z";
 
-            GameObject zoneClone1 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x,0,col.gameObject.transform.position.z + zoneSize), col.gameObject.transform.rotation) as GameObject;
-            zoneClone1.transform.parent = presenceZone.transform;
-            zoneClone1.tag = "N";
+            // SPECIAL ZONES CONTROLLER
+            if(col.gameObject.transform.position.x > 100f && col.gameObject.transform.position.x < 150f && col.gameObject.transform.position.z > 100f && col.gameObject.transform.position.z < 150f)
+            {
+                GameObject zoneClone1 = Instantiate(sZones[0], new Vector3(col.gameObject.transform.position.x,0,col.gameObject.transform.position.z + zoneSize), col.gameObject.transform.rotation) as GameObject;
+                zoneClone1.transform.parent = presenceZone.transform;
+                zoneClone1.tag = "N";
+            } else {
+                GameObject zoneClone1 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x,0,col.gameObject.transform.position.z + zoneSize), col.gameObject.transform.rotation) as GameObject;
+                zoneClone1.transform.parent = presenceZone.transform;
+                zoneClone1.tag = "N";
+            }
 
             GameObject zoneClone2 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x + zoneSize,0,col.gameObject.transform.position.z + zoneSize), col.gameObject.transform.rotation) as GameObject;
             zoneClone2.transform.parent = presenceZone.transform;
@@ -76,9 +85,16 @@ public class PlayerZoneDet : MonoBehaviour
 
             col.gameObject.tag = "Z";
 
-            GameObject zoneClone1 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x,0,col.gameObject.transform.position.z - zoneSize), col.gameObject.transform.rotation) as GameObject;
-            zoneClone1.transform.parent = presenceZone.transform;
-            zoneClone1.tag = "S";
+            if(col.gameObject.transform.position.x > 100 && col.gameObject.transform.position.x < 150f && col.gameObject.transform.position.z > 200f && col.gameObject.transform.position.z < 250f)
+            {
+                GameObject zoneClone1 = Instantiate(sZones[0], new Vector3(col.gameObject.transform.position.x,0,col.gameObject.transform.position.z - zoneSize), col.gameObject.transform.rotation) as GameObject;
+                zoneClone1.transform.parent = presenceZone.transform;
+                zoneClone1.tag = "S";
+            } else {
+                GameObject zoneClone1 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x,0,col.gameObject.transform.position.z - zoneSize), col.gameObject.transform.rotation) as GameObject;
+                zoneClone1.transform.parent = presenceZone.transform;
+                zoneClone1.tag = "S";
+            }
 
             GameObject zoneClone2 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x + zoneSize,0,col.gameObject.transform.position.z - zoneSize), col.gameObject.transform.rotation) as GameObject;
             zoneClone2.transform.parent = presenceZone.transform;
@@ -106,13 +122,20 @@ public class PlayerZoneDet : MonoBehaviour
 
             col.gameObject.tag = "Z";
 
+            if(col.gameObject.transform.position.x > 50f && col.gameObject.transform.position.x < 100f && col.gameObject.transform.position.z > 150f && col.gameObject.transform.position.z < 200f)
+            {
+                GameObject zoneClone2 = Instantiate(sZones[0], new Vector3(col.gameObject.transform.position.x + zoneSize,0,col.gameObject.transform.position.z), col.gameObject.transform.rotation) as GameObject;
+                zoneClone2.transform.parent = presenceZone.transform;
+                zoneClone2.tag = "E";
+            } else {
+                GameObject zoneClone2 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x + zoneSize,0,col.gameObject.transform.position.z), col.gameObject.transform.rotation) as GameObject;
+                zoneClone2.transform.parent = presenceZone.transform;
+                zoneClone2.tag = "E";
+            }
+
             GameObject zoneClone1 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x + zoneSize,0,col.gameObject.transform.position.z + zoneSize), col.gameObject.transform.rotation) as GameObject;
             zoneClone1.transform.parent = presenceZone.transform;
             zoneClone1.tag = "NE";
-
-            GameObject zoneClone2 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x + zoneSize,0,col.gameObject.transform.position.z), col.gameObject.transform.rotation) as GameObject;
-            zoneClone2.transform.parent = presenceZone.transform;
-            zoneClone2.tag = "E";
 
             GameObject zoneClone3 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x + zoneSize,0,col.gameObject.transform.position.z - zoneSize), col.gameObject.transform.rotation) as GameObject;
             zoneClone3.transform.parent = presenceZone.transform;
@@ -136,13 +159,20 @@ public class PlayerZoneDet : MonoBehaviour
 
             col.gameObject.tag = "Z";
 
+            if(col.gameObject.transform.position.x > 150 && col.gameObject.transform.position.x < 200f && col.gameObject.transform.position.z > 150f && col.gameObject.transform.position.z < 200f)
+            {
+                GameObject zoneClone2 = Instantiate(sZones[0], new Vector3(col.gameObject.transform.position.x - zoneSize,0,col.gameObject.transform.position.z), col.gameObject.transform.rotation) as GameObject;
+                zoneClone2.transform.parent = presenceZone.transform;
+                zoneClone2.tag = "W";
+            } else {
+                GameObject zoneClone2 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x - zoneSize,0,col.gameObject.transform.position.z), col.gameObject.transform.rotation) as GameObject;
+                zoneClone2.transform.parent = presenceZone.transform;
+                zoneClone2.tag = "W";
+            }
+
             GameObject zoneClone1 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x - zoneSize,0,col.gameObject.transform.position.z + zoneSize), col.gameObject.transform.rotation) as GameObject;
             zoneClone1.transform.parent = presenceZone.transform;
             zoneClone1.tag = "NW";
-
-            GameObject zoneClone2 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x - zoneSize,0,col.gameObject.transform.position.z), col.gameObject.transform.rotation) as GameObject;
-            zoneClone2.transform.parent = presenceZone.transform;
-            zoneClone2.tag = "W";
 
             GameObject zoneClone3 = Instantiate(zones[Random.Range(0, zones.Length)], new Vector3(col.gameObject.transform.position.x - zoneSize,0,col.gameObject.transform.position.z - zoneSize), col.gameObject.transform.rotation) as GameObject;
             zoneClone3.transform.parent = presenceZone.transform;

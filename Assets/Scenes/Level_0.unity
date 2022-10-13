@@ -5220,9 +5220,21 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8407644477091965897, guid: 7a5f419dfd362124da2ba61ace75856e, type: 3}
+      propertyPath: sZones.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407644477091965897, guid: 7a5f419dfd362124da2ba61ace75856e, type: 3}
+      propertyPath: sZones.Array.data[0]
+      value: 
+      objectReference: {fileID: 7937203371668634290, guid: a94ee967e1e37134a8276596b036eaaa, type: 3}
+    - target: {fileID: 8407644477091965897, guid: 7a5f419dfd362124da2ba61ace75856e, type: 3}
       propertyPath: zones.Array.data[12]
       value: 
       objectReference: {fileID: 7937203371668634290, guid: 93e7df0cb588af746b93f95f46a62c8a, type: 3}
+    - target: {fileID: 8915892768810483566, guid: 7a5f419dfd362124da2ba61ace75856e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
