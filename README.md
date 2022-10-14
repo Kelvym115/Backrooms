@@ -13,3 +13,14 @@ long as possible, in a maze of procedurally generated mono-yellow rooms.
 - Backrooms with procedurally generated rooms;
 - Hunger and thirst system (with collectible items);
 - Mysteries and secrets to be discovered, as well as passages to other levels of the Backrooms;
+
+**TO DO**
+
+- Create at least 15 more generic zones;
+- Create at least 5 more special zones;
+- Set ranges of coordinates with spam of the same specific zone for expansion;
+- Finish the house texturing and furnituring;
+- Create enemies to the level 0;
+- Create items to collect;
+
+- Create Level 1;
