@@ -48524,6 +48524,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3216518474574083473, guid: 7a5f419dfd362124da2ba61ace75856e, type: 3}
+      propertyPath: field of view
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 3234401582406218151, guid: 7a5f419dfd362124da2ba61ace75856e, type: 3}
       propertyPath: m_Name
       value: Player_Test
