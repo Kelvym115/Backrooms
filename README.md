@@ -1,4 +1,4 @@
-# Backrooms
+# Backrooms v0.2.11 (Pre-Alpha)
 
 This study project is an experiment that addresses the Backrooms. The project aims to bring a Backrooms experience as faithful as possible to its description.
 Although the title of the project is 'Backrooms' the name of the game will actually be: 'Take the trash out!'. The player will take on the skin of a person who has 
