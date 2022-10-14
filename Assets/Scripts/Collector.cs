@@ -20,10 +20,8 @@ public class Collector : MonoBehaviour
     {
         if (col.gameObject.tag == "Trash"){
             Destroy(col.gameObject);
-            Debug.Log("Coletou lixo!");
         } else if(col.gameObject.tag == "Bag"){
             Destroy(col.gameObject);
-            Debug.Log("Coletou saco de lixo!");
         }
     }
 }

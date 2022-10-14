@@ -24,7 +24,6 @@ public class PlayerZoneDet : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log(col.gameObject.name);
         if (col.gameObject.tag == "Z")
         {
             //Do nothing yet
@@ -344,7 +343,6 @@ public class PlayerZoneDet : MonoBehaviour
 
         if (col.gameObject.name == "Load_Backrooms")
         {
-            Debug.Log("Tocou");
             SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
     }
