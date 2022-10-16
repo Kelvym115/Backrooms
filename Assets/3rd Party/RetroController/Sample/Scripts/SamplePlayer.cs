@@ -54,7 +54,7 @@ namespace vnc.Samples
             // Here the sample gets input from the player
             fwd = (Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0);
             strafe = (Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0);
-            swim = (Input.GetKey(KeyCode.Space) ? 1 : 0) - (Input.GetKey(KeyCode.C) ? 1 : 0);
+            swim = (Input.GetKey(KeyCode.Space) ? 1 : 0) - (Input.GetKey(KeyCode.LeftControl) ? 1 : 0);
             jump = Input.GetKeyDown(KeyCode.Space);
             sprint = Input.GetKey(KeyCode.LeftShift);
 
@@ -62,13 +62,13 @@ namespace vnc.Samples
             if (toggleDucking)
             {
                 // switch between modes by hitting the button once
-                if (Input.GetKeyDown(KeyCode.C))
+                if (Input.GetKeyDown(KeyCode.LeftControl))
                     duck = !duck;
             }
             else
             {
                 // requires the player to hold the button
-                duck = Input.GetKey(KeyCode.C);
+                duck = Input.GetKey(KeyCode.LeftControl);
             }
 
             // these inputs are fed into the controller
