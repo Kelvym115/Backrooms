@@ -23,6 +23,7 @@ TagManager:
   - Bag
   - LightPlug
   - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX
