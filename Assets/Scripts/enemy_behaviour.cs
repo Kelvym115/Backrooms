@@ -14,6 +14,7 @@ public class enemy_behaviour : MonoBehaviour
     private float dist;
     private float playerDist;
     private int chaseDist;
+    private bool isNav;
     //private GameObject mummy;
     //private Animator _anim;
 
@@ -25,6 +26,7 @@ public class enemy_behaviour : MonoBehaviour
         //_anim.SetTrigger("Walk");
 
         chaseDist = 10;
+        isNav = true;
 
         //waypointIndex = 0;
         //transform.LookAt(waypoints[waypointIndex].position);
@@ -33,15 +35,32 @@ public class enemy_behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        NavMeshPath path = new NavMeshPath();
         //dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
         playerDist = Vector3.Distance(transform.position, player.position);
 
         if(playerDist <= chaseDist)
         {
-            chaseDist = 25;
-            //_anim.SetTrigger("Run");
-            Chase();
+            if(isNav){
+                enemy.CalculatePath(player.position, path);
+            
+                chaseDist = 25;
+                //_anim.SetTrigger("Run");
+                Chase();
+            }
         } 
+
+        if (isNav){
+            if (path.status == NavMeshPathStatus.PathPartial)
+            {
+                gameObject.GetComponent<NavMeshAgent>().enabled = false;
+                isNav = false;
+                StartCoroutine(waitForNav(2f));
+            }
+        } else {
+            transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 3);
+        }
+        
         // else {
         //     chaseDist = 10;
         //     if(dist < 0.5f)
@@ -63,6 +82,13 @@ public class enemy_behaviour : MonoBehaviour
     {
         // enemy.SetDestination(player.position);
         enemy.SetDestination(player.position);
+    }
+
+    private IEnumerator waitForNav(float waitTime)
+    {       
+        yield return new WaitForSeconds(waitTime);
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        isNav = true;
     }
 
     // void IncreaseIndex()
