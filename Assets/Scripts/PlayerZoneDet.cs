@@ -9,6 +9,8 @@ public class PlayerZoneDet : MonoBehaviour
     public float zoneSize = 5f;
     public List<GameObject> zones;
     public List<GameObject> sZones;
+    public List<GameObject> creatures;
+    public int chanceOfEnemySpawn = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,11 @@ public class PlayerZoneDet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void creatureSpawn()
+    {
+
     }
 
     void OnCollisionEnter(Collision col)

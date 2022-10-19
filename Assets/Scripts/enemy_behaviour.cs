@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class enemy_behaviour : MonoBehaviour
 {
     public NavMeshAgent enemy;
-    public Transform player;
+    private Transform player;
+    public GameObject audioData;
+    private AudioSource audioSource;
+    private bool audioFlag;
 
     //public Transform[] waypoints;
 
@@ -15,12 +18,20 @@ public class enemy_behaviour : MonoBehaviour
     private float playerDist;
     private int chaseDist;
     private bool isNav;
+    private bool isChasing;
     //private GameObject mummy;
     //private Animator _anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject playerObj = GameObject.Find("Player_Test");
+        player = playerObj.transform;
+
+        isChasing = false;
+
+        audioFlag = true;
+        audioSource = audioData.GetComponent<AudioSource>();
         //mummy = GameObject.Find("Mummy_1_Weaponless");
         //_anim = mummy.GetComponent<Animator>();
         //_anim.SetTrigger("Walk");
@@ -43,12 +54,16 @@ public class enemy_behaviour : MonoBehaviour
         {
             if(isNav){
                 enemy.CalculatePath(player.position, path);
-            
                 chaseDist = 25;
+                isChasing = true;
                 //_anim.SetTrigger("Run");
                 Chase();
+
             }
-        } 
+        } else if (isChasing && playerDist >= chaseDist * 1.5f)
+        {
+            Destroy(gameObject);
+        }
 
         if (isNav){
             if (path.status == NavMeshPathStatus.PathPartial)
@@ -58,7 +73,7 @@ public class enemy_behaviour : MonoBehaviour
                 StartCoroutine(waitForNav(2f));
             }
         } else {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 3);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 5);
         }
         
         // else {
@@ -81,7 +96,16 @@ public class enemy_behaviour : MonoBehaviour
     void Chase()
     {
         // enemy.SetDestination(player.position);
+        if(audioFlag){
+            PlayAudio();
+        }
         enemy.SetDestination(player.position);
+    }
+
+    void PlayAudio()
+    {
+        audioSource.Play();
+        audioFlag = false;
     }
 
     private IEnumerator waitForNav(float waitTime)
