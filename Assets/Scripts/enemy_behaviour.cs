@@ -36,7 +36,7 @@ public class enemy_behaviour : MonoBehaviour
         //_anim = mummy.GetComponent<Animator>();
         //_anim.SetTrigger("Walk");
 
-        chaseDist = 10;
+        chaseDist = 25;
         isNav = true;
 
         //waypointIndex = 0;
