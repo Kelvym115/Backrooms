@@ -26,6 +26,10 @@ public class enemy_behaviour : MonoBehaviour
     void Start()
     {
         GameObject playerObj = GameObject.Find("Player_Test");
+        if(playerObj == null){
+            // destroi o inimigo se o objeto do jogador não existir ainda
+            Destroy(gameObject);
+        }
         player = playerObj.transform;
 
         isChasing = false;
