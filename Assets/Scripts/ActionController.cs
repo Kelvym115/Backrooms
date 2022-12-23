@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class ActionController : MonoBehaviour
 {
+    public AudioSource pickupSound;
+    public AudioSource switchOnSound;
+    public AudioSource switchOffSound;
+
+    public AudioSource doorOpenSound;
+    public AudioSource doorCloseSound;
+
     private Animator door1Anim;
     private Animator door2Anim;
     private Animator door3Anim;
@@ -21,6 +28,8 @@ public class ActionController : MonoBehaviour
     private bool bagCollected;
 
     private BoxCollider outsideFloor;
+
+    private Text textContainer;
 
     //private GameObject actionTextObj;
     //private Text actionText;
@@ -51,6 +60,9 @@ public class ActionController : MonoBehaviour
         //actionTextObj =  GameObject.Find("ActionText");
         //actionTextObj.GetComponent<UnityEngine.UI.Text>().text = "Aperte E";
         //actionTextObj.SetActive(false);
+
+        textContainer = GameObject.Find("TextContainer").GetComponent<Text>();
+        textContainer.text = "";
 
         cone1 = GameObject.Find("cone1");
         light1 = GameObject.Find("light1");
@@ -120,73 +132,102 @@ public class ActionController : MonoBehaviour
                 if(hit.collider.gameObject.name == "Door1_Wood"){
                     print(hit.collider.gameObject.name);
                     if(door1Open){
+                        doorCloseSound.Play();
                         door1Open = false;
                     } else {
+                        doorOpenSound.Play();
                         door1Open = true;
                     }
                 } else if(hit.collider.gameObject.name == "Door2_Wood"){
                     print(hit.collider.gameObject.name);
                     if(door2Open){
+                        doorOpenSound.Play();
                         door2Open = false;
                     } else {
+                        doorCloseSound.Play();
                         door2Open = true;
                     }
                 } else if(hit.collider.gameObject.name == "Door3_Wood"){
                     print(hit.collider.gameObject.name);
                     if(door3Open){
+                        doorOpenSound.Play();
                         door3Open = false;
                     } else {
+                        doorCloseSound.Play();
                         door3Open = true;
                     }
                 } else if(hit.collider.gameObject.name == "Door4_Wood"){
                     print(hit.collider.gameObject.name);
                     if(door4Open){
+                        doorOpenSound.Play();
                         door4Open = false;
                     } else {
+                        doorCloseSound.Play();
                         door4Open = true;
                     }
                 } else if(hit.collider.gameObject.tag == "Bag"){
+                    pickupSound.Play();
                     itemCollected = hit.collider.gameObject;
                     bagCollected = true;
                     outsideFloor.center = new Vector3(-17f, 0f, -5.4f);
                     outsideFloor.size= new Vector3(5.98f, 0f, 3f);
                 } else if(hit.collider.gameObject.tag == "Trash" && bagCollected){
+                    pickupSound.Play();
                     itemCollected = hit.collider.gameObject;
+                } else if(hit.collider.gameObject.tag == "Trash" && bagCollected == false){
+                    textContainer.text = "I need a bag to collect it";
+                    StartCoroutine(TextContainerTimer(3));
                 } else if(hit.collider.gameObject.tag == "LightPlug"){
                     if(hit.collider.gameObject.name == "LightPlug (3)"){
                         if(light4.activeInHierarchy){
+                            switchOnSound.Play();
                             light4.SetActive(false);
                         } else {
+                            switchOffSound.Play();
                             light4.SetActive(true);
                         }
                     } else if(hit.collider.gameObject.name == "LightPlug (2)"){
                         if(light1.activeInHierarchy){
+                            switchOnSound.Play();
                             light1.SetActive(false);
                             light2.SetActive(false);
                         } else {
+                            switchOffSound.Play();
                             light1.SetActive(true);
                             light2.SetActive(true);
                         }
                     } else if(hit.collider.gameObject.name == "LightPlug (4)"){
                         if(light3.activeInHierarchy){
+                            switchOnSound.Play();
                             light3.SetActive(false);
                         } else {
+                            switchOffSound.Play();
                             light3.SetActive(true);
                         }
                     } else if(hit.collider.gameObject.name == "LightPlug (5)"){
                         if(light5.activeInHierarchy){
+                            switchOnSound.Play();                            
                             light5.SetActive(false);
                         } else {
+                            switchOffSound.Play();
                             light5.SetActive(true);
                         }
                     } else if(hit.collider.gameObject.name == "LightPlug (1)"){
                         if(light6.activeInHierarchy){
+                            switchOnSound.Play();
                             light6.SetActive(false);
                         } else {
+                            switchOffSound.Play();
                             light6.SetActive(true);
                         }
                     }
-                } 
+                } else if(hit.collider.gameObject.name == "TrashOutside" && bagCollected == false){
+                    textContainer.text = "I need to bring the trash here";
+                    StartCoroutine(TextContainerTimer(3));
+                } else if(hit.collider.gameObject.name == "Note"){
+                    textContainer.text = "She looks mad";
+                    StartCoroutine(TextContainerTimer(3));
+                }
             }
         } else {
             //actionTextObj.SetActive(false);
@@ -195,5 +236,11 @@ public class ActionController : MonoBehaviour
         if(itemCollected != null){
             itemCollected.transform.position = Vector3.MoveTowards(itemCollected.transform.position, itemCollector.transform.position, Time.deltaTime * collectSpeed);
         }
+    }
+
+    IEnumerator TextContainerTimer(int sec)
+    {
+        yield return new WaitForSeconds(sec);
+        textContainer.text = "";
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class enemy_behaviour : MonoBehaviour
 {
@@ -79,6 +80,11 @@ public class enemy_behaviour : MonoBehaviour
         } else {
             transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 5);
         }
+
+        if (playerDist > 150) {
+            Debug.Log("Enemy Missed!");
+            Destroy(gameObject);
+        }
         
         // else {
         //     chaseDist = 10;
@@ -118,6 +124,13 @@ public class enemy_behaviour : MonoBehaviour
         gameObject.GetComponent<NavMeshAgent>().enabled = true;
         isNav = true;
     }
+
+    void OnCollisionEnter(Collision col){
+        Debug.Log(col.gameObject.tag);
+        if (col.gameObject.tag == "Player"){
+            SceneManager.LoadScene(3, LoadSceneMode.Single);
+        }
+     }
 
     // void IncreaseIndex()
     // {
