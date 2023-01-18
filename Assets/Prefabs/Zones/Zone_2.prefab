@@ -12051,7 +12051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c6e954bf152ff45aaac48bda5e4e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceOfSpawn: 5
+  chanceOfSpawn: -1
   enemies:
   - {fileID: 3553501543429551873, guid: c32b1d14b4d1f524688dc89d4b4e90c6, type: 3}
 --- !u!1 &9004687145038801717

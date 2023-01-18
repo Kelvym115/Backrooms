@@ -17,7 +17,7 @@ public class ActionControllerBr : MonoBehaviour
     void Start()
     {
         textContainer = GameObject.Find("TextContainer").GetComponent<Text>();
-        textContainer.text = "What the f... what is this place?";
+        //textContainer.text = "What the f... what is this place?";
         StartCoroutine(TextContainerTimer(5));
 
         itemCollector = GameObject.Find("ItemCollector");

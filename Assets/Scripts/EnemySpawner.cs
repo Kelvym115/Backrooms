@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public int chanceOfSpawn = 5;
+    public int chanceOfSpawn = -1;
     public List<GameObject> enemies;
 
     private Transform spawner;
