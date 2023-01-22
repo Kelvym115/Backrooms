@@ -2365,7 +2365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chanceOfSpawn: 5
   enemies:
-  - {fileID: 3553501543429551873, guid: c32b1d14b4d1f524688dc89d4b4e90c6, type: 3}
+  - {fileID: 1355423221949898055, guid: 2124345af7be3e448aa08a1eb52081a0, type: 3}
 --- !u!1 &2267160287105694001
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class PlayerZoneDet : MonoBehaviour
     public float zoneSize = 5f;
     public List<GameObject> zones;
     public List<GameObject> sZones;
+    public int SpecialZoneChance = 3;
 
     private Transform player;
 
@@ -32,6 +34,14 @@ public class PlayerZoneDet : MonoBehaviour
                 Destroy (GameObject.FindWithTag("S"));
                 Destroy (GameObject.FindWithTag("SW"));
                 Destroy (GameObject.FindWithTag("SE"));
+
+                if(hit.collider.name.Contains("s_")){
+                    //Debug.Log("Pisou no especial!");
+                    string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
+                    int sIndex = int.Parse(sPart);
+                    //Debug.Log("Index: " + sIndex);
+                    sZones.RemoveAt(sIndex - 1);
+                }
 
                 GameObject W = GameObject.FindWithTag("W");
                 W.tag = "SW";
@@ -58,7 +68,7 @@ public class PlayerZoneDet : MonoBehaviour
                 int zoneIndex;
                 bool sFlag = false;
 
-                if(specialRead <= 3 && range1 == false){
+                if(specialRead <= SpecialZoneChance && range1 == false){
                     newZone = sZones;
                     sFlag = true;
                 } else {
@@ -76,9 +86,9 @@ public class PlayerZoneDet : MonoBehaviour
 
                 // CASO O ITEM INSTANCIADO SEJA ESPECIAL ELE VAI REMOVER DA LISTA
                 // IDEAL QUE ISSO OCORRA SOMENTE CASO O JOGADOR PISE NA ZONA ESPECIAL
-                if (sFlag){
-                    sZones.RemoveAt(zoneIndex);
-                }
+                // if (sFlag){
+                //     sZones.RemoveAt(zoneIndex);
+                // }
 
                 GameObject zoneClone2 = Instantiate(range1 ? zones[14] : zones[Random.Range(0, zones.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x + zoneSize,0,hit.collider.gameObject.transform.position.z + zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone2.transform.parent = presenceZone.transform;
@@ -92,6 +102,14 @@ public class PlayerZoneDet : MonoBehaviour
                 Destroy (GameObject.FindWithTag("N"));
                 Destroy (GameObject.FindWithTag("NW"));
                 Destroy (GameObject.FindWithTag("NE"));
+
+                if(hit.collider.name.Contains("s_")){
+                    //Debug.Log("Pisou no especial!");
+                    string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
+                    int sIndex = int.Parse(sPart);
+                    //Debug.Log("Index: " + sIndex);
+                    sZones.RemoveAt(sIndex - 1);
+                }
 
                 GameObject W = GameObject.FindWithTag("W");
                 W.tag = "NW";
@@ -118,7 +136,7 @@ public class PlayerZoneDet : MonoBehaviour
                 int zoneIndex;
                 bool sFlag = false;
 
-                if(specialRead <= 3 && range1 == false){
+                if(specialRead <= SpecialZoneChance && range1 == false){
                     newZone = sZones;
                     sFlag = true;
                 } else {
@@ -134,9 +152,9 @@ public class PlayerZoneDet : MonoBehaviour
                 zoneClone1.transform.parent = presenceZone.transform;
                 zoneClone1.tag = "S";
 
-                if (sFlag){
-                    sZones.RemoveAt(zoneIndex);
-                }
+                // if (sFlag){
+                //     sZones.RemoveAt(zoneIndex);
+                // }
 
                 GameObject zoneClone2 = Instantiate(range1 ? zones[14] : zones[Random.Range(0, zones.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x + zoneSize,0,hit.collider.gameObject.transform.position.z - zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone2.transform.parent = presenceZone.transform;
@@ -150,6 +168,14 @@ public class PlayerZoneDet : MonoBehaviour
                 Destroy (GameObject.FindWithTag("NW"));
                 Destroy (GameObject.FindWithTag("W"));
                 Destroy (GameObject.FindWithTag("SW"));
+
+                if(hit.collider.name.Contains("s_")){
+                    //Debug.Log("Pisou no especial!");
+                    string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
+                    int sIndex = int.Parse(sPart);
+                    //Debug.Log("Index: " + sIndex);
+                    sZones.RemoveAt(sIndex - 1);
+                }
 
                 GameObject N = GameObject.FindWithTag("N");
                 N.tag = "NW";
@@ -176,7 +202,7 @@ public class PlayerZoneDet : MonoBehaviour
                 int zoneIndex;
                 bool sFlag = false;
 
-                if(specialRead <= 3 && range1 == false){
+                if(specialRead <= SpecialZoneChance && range1 == false){
                     newZone = sZones;
                     sFlag = true;
                 } else {
@@ -192,9 +218,9 @@ public class PlayerZoneDet : MonoBehaviour
                 zoneClone2.transform.parent = presenceZone.transform;
                 zoneClone2.tag = "E";
 
-                if (sFlag){
-                    sZones.RemoveAt(zoneIndex);
-                }
+                // if (sFlag){
+                //     sZones.RemoveAt(zoneIndex);
+                // }
 
                 GameObject zoneClone1 = Instantiate(range1 ? zones[14] : zones[Random.Range(0, zones.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x + zoneSize,0,hit.collider.gameObject.transform.position.z + zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone1.transform.parent = presenceZone.transform;
@@ -208,6 +234,14 @@ public class PlayerZoneDet : MonoBehaviour
                 Destroy (GameObject.FindWithTag("NE"));
                 Destroy (GameObject.FindWithTag("E"));
                 Destroy (GameObject.FindWithTag("SE"));
+
+                if(hit.collider.name.Contains("s_")){
+                    //Debug.Log("Pisou no especial!");
+                    string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
+                    int sIndex = int.Parse(sPart);
+                    //Debug.Log("Index: " + sIndex);
+                    sZones.RemoveAt(sIndex - 1);
+                }
 
                 GameObject N = GameObject.FindWithTag("N");
                 N.tag = "NE";
@@ -234,7 +268,7 @@ public class PlayerZoneDet : MonoBehaviour
                 int zoneIndex;
                 bool sFlag = false;
 
-                if(specialRead <= 3 && range1 == false){
+                if(specialRead <= SpecialZoneChance && range1 == false){
                     newZone = sZones;
                     sFlag = true;
                 } else {
@@ -250,9 +284,9 @@ public class PlayerZoneDet : MonoBehaviour
                 zoneClone2.transform.parent = presenceZone.transform;
                 zoneClone2.tag = "W";
 
-                if (sFlag){
-                    sZones.RemoveAt(zoneIndex);
-                }
+                // if (sFlag){
+                //     sZones.RemoveAt(zoneIndex);
+                // }
 
                 GameObject zoneClone1 = Instantiate(range1 ? zones[14] : zones[Random.Range(0, zones.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x - zoneSize,0,hit.collider.gameObject.transform.position.z + zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone1.transform.parent = presenceZone.transform;

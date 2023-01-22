@@ -78,7 +78,8 @@ public class enemy_behaviour : MonoBehaviour
                 StartCoroutine(waitForNav(2f));
             }
         } else {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 5);
+            transform.LookAt(player);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 6);
         }
 
         if (playerDist > 150) {
@@ -128,7 +129,7 @@ public class enemy_behaviour : MonoBehaviour
     void OnCollisionEnter(Collision col){
         Debug.Log(col.gameObject.tag);
         if (col.gameObject.tag == "Player"){
-            SceneManager.LoadScene(3, LoadSceneMode.Single);
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
      }
 

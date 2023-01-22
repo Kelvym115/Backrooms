@@ -6413,7 +6413,7 @@ GameObject:
   - component: {fileID: 7937203371668634295}
   - component: {fileID: 7937203371668634288}
   m_Layer: 0
-  m_Name: Zone_s3
+  m_Name: Zones_3
   m_TagString: Z
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

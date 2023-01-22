@@ -88,13 +88,13 @@ public class MenuBehaviour : MonoBehaviour
                 //menuFade.SetFloat("_Metallic", .55f);
                 menuAlpha = new Color(0.0f, 0.0f, 0.0f, .5f);
                 menuFade.SetColor("_Color", menuAlpha);
-                playerCrosshair.SetActive(false);
+                //playerCrosshair.SetActive(false);
                 itemLabel.text = "";
             } else {
                 //menuFade.SetFloat("_Metallic", 0f);
                 menuAlpha = new Color(0.0f, 0.0f, 0.0f, 0.0f);
                 menuFade.SetColor("_Color", menuAlpha);
-                playerCrosshair.SetActive(true);
+                //playerCrosshair.SetActive(true);
                 itemLabel.text = "";
             }
         }
