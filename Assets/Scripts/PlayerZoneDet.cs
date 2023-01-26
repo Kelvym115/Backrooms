@@ -13,11 +13,13 @@ public class PlayerZoneDet : MonoBehaviour
     public int SpecialZoneChance = 3;
 
     private Transform player;
+    private List<int> deletedIndexes;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        deletedIndexes = new List<int>();
     }
 
     // Update is called once per frame
@@ -40,7 +42,10 @@ public class PlayerZoneDet : MonoBehaviour
                     string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
                     int sIndex = int.Parse(sPart);
                     //Debug.Log("Index: " + sIndex);
-                    sZones.RemoveAt(sIndex - 1);
+                    if(deletedIndexes.Contains(sIndex) == false){
+                        sZones.RemoveAt(sIndex - 1);
+                        deletedIndexes.Add(sIndex);
+                    }
                 }
 
                 GameObject W = GameObject.FindWithTag("W");
@@ -66,29 +71,21 @@ public class PlayerZoneDet : MonoBehaviour
                 List<GameObject> newZone;
 
                 int zoneIndex;
-                bool sFlag = false;
 
                 if(specialRead <= SpecialZoneChance && range1 == false){
                     newZone = sZones;
-                    sFlag = true;
                 } else {
                     newZone = zones;
-                    sFlag = false;
                 }
 
-                zoneIndex = Random.Range(0, newZone.Count - 1);
+                zoneIndex = Random.Range(0, newZone.Count );
+                Debug.Log(zoneIndex);
                 // END OF SPECIAL ZONES CONTROLLER
                 // ONLY AFFECT N ZONES IN THIS CASE
 
-                GameObject zoneClone1 = Instantiate(range1 ? newZone[14] : newZone[zoneIndex], new Vector3(hit.collider.gameObject.transform.position.x,0,hit.collider.gameObject.transform.position.z + zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
+                GameObject zoneClone1 = Instantiate(range1 ? zones[14] : newZone[zoneIndex], new Vector3(hit.collider.gameObject.transform.position.x,0,hit.collider.gameObject.transform.position.z + zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone1.transform.parent = presenceZone.transform;
                 zoneClone1.tag = "N";
-
-                // CASO O ITEM INSTANCIADO SEJA ESPECIAL ELE VAI REMOVER DA LISTA
-                // IDEAL QUE ISSO OCORRA SOMENTE CASO O JOGADOR PISE NA ZONA ESPECIAL
-                // if (sFlag){
-                //     sZones.RemoveAt(zoneIndex);
-                // }
 
                 GameObject zoneClone2 = Instantiate(range1 ? zones[14] : zones[Random.Range(0, zones.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x + zoneSize,0,hit.collider.gameObject.transform.position.z + zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone2.transform.parent = presenceZone.transform;
@@ -108,7 +105,10 @@ public class PlayerZoneDet : MonoBehaviour
                     string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
                     int sIndex = int.Parse(sPart);
                     //Debug.Log("Index: " + sIndex);
-                    sZones.RemoveAt(sIndex - 1);
+                    if(deletedIndexes.Contains(sIndex) == false){
+                        sZones.RemoveAt(sIndex - 1);
+                        deletedIndexes.Add(sIndex);
+                    }
                 }
 
                 GameObject W = GameObject.FindWithTag("W");
@@ -134,27 +134,21 @@ public class PlayerZoneDet : MonoBehaviour
                 List<GameObject> newZone;
 
                 int zoneIndex;
-                bool sFlag = false;
 
                 if(specialRead <= SpecialZoneChance && range1 == false){
                     newZone = sZones;
-                    sFlag = true;
                 } else {
                     newZone = zones;
-                    sFlag = false;
                 }
 
-                zoneIndex = Random.Range(0, newZone.Count - 1);
+                zoneIndex = Random.Range(0, newZone.Count);
+                Debug.Log(zoneIndex);
                 // END OF SPECIAL ZONES CONTROLLER
                 // ONLY AFFECT N ZONES IN THIS CASE
 
-                GameObject zoneClone1 = Instantiate(range1 ? newZone[14] : newZone[Random.Range(0, newZone.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x,0,hit.collider.gameObject.transform.position.z - zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
+                GameObject zoneClone1 = Instantiate(range1 ? zones[14] : newZone[zoneIndex], new Vector3(hit.collider.gameObject.transform.position.x,0,hit.collider.gameObject.transform.position.z - zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone1.transform.parent = presenceZone.transform;
                 zoneClone1.tag = "S";
-
-                // if (sFlag){
-                //     sZones.RemoveAt(zoneIndex);
-                // }
 
                 GameObject zoneClone2 = Instantiate(range1 ? zones[14] : zones[Random.Range(0, zones.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x + zoneSize,0,hit.collider.gameObject.transform.position.z - zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone2.transform.parent = presenceZone.transform;
@@ -174,7 +168,10 @@ public class PlayerZoneDet : MonoBehaviour
                     string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
                     int sIndex = int.Parse(sPart);
                     //Debug.Log("Index: " + sIndex);
-                    sZones.RemoveAt(sIndex - 1);
+                    if(deletedIndexes.Contains(sIndex) == false){
+                        sZones.RemoveAt(sIndex - 1);
+                        deletedIndexes.Add(sIndex);
+                    }
                 }
 
                 GameObject N = GameObject.FindWithTag("N");
@@ -200,27 +197,21 @@ public class PlayerZoneDet : MonoBehaviour
                 List<GameObject> newZone;
 
                 int zoneIndex;
-                bool sFlag = false;
 
                 if(specialRead <= SpecialZoneChance && range1 == false){
                     newZone = sZones;
-                    sFlag = true;
                 } else {
                     newZone = zones;
-                    sFlag = false;
                 }
 
-                zoneIndex = Random.Range(0, newZone.Count - 1);
+                zoneIndex = Random.Range(0, newZone.Count);
+                Debug.Log(zoneIndex);
                 // END OF SPECIAL ZONES CONTROLLER
                 // ONLY AFFECT N ZONES IN THIS CASE
 
-                GameObject zoneClone2 = Instantiate(range1 ? newZone[14] : newZone[Random.Range(0, newZone.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x + zoneSize,0,hit.collider.gameObject.transform.position.z), hit.collider.gameObject.transform.rotation) as GameObject;
+                GameObject zoneClone2 = Instantiate(range1 ? zones[14] : newZone[zoneIndex], new Vector3(hit.collider.gameObject.transform.position.x + zoneSize,0,hit.collider.gameObject.transform.position.z), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone2.transform.parent = presenceZone.transform;
                 zoneClone2.tag = "E";
-
-                // if (sFlag){
-                //     sZones.RemoveAt(zoneIndex);
-                // }
 
                 GameObject zoneClone1 = Instantiate(range1 ? zones[14] : zones[Random.Range(0, zones.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x + zoneSize,0,hit.collider.gameObject.transform.position.z + zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone1.transform.parent = presenceZone.transform;
@@ -240,7 +231,10 @@ public class PlayerZoneDet : MonoBehaviour
                     string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
                     int sIndex = int.Parse(sPart);
                     //Debug.Log("Index: " + sIndex);
-                    sZones.RemoveAt(sIndex - 1);
+                    if(deletedIndexes.Contains(sIndex) == false){
+                        sZones.RemoveAt(sIndex - 1);
+                        deletedIndexes.Add(sIndex);
+                    }
                 }
 
                 GameObject N = GameObject.FindWithTag("N");
@@ -266,27 +260,21 @@ public class PlayerZoneDet : MonoBehaviour
                 List<GameObject> newZone;
 
                 int zoneIndex;
-                bool sFlag = false;
 
                 if(specialRead <= SpecialZoneChance && range1 == false){
                     newZone = sZones;
-                    sFlag = true;
                 } else {
                     newZone = zones;
-                    sFlag = false;
                 }
 
-                zoneIndex = Random.Range(0, newZone.Count - 1);
+                zoneIndex = Random.Range(0, newZone.Count);
+                Debug.Log(zoneIndex);
                 // END OF SPECIAL ZONES CONTROLLER
                 // ONLY AFFECT N ZONES IN THIS CASE
 
-                GameObject zoneClone2 = Instantiate(range1 ? newZone[14] : newZone[Random.Range(0, newZone.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x - zoneSize,0,hit.collider.gameObject.transform.position.z), hit.collider.gameObject.transform.rotation) as GameObject;
+                GameObject zoneClone2 = Instantiate(range1 ? zones[14] : newZone[zoneIndex], new Vector3(hit.collider.gameObject.transform.position.x - zoneSize,0,hit.collider.gameObject.transform.position.z), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone2.transform.parent = presenceZone.transform;
                 zoneClone2.tag = "W";
-
-                // if (sFlag){
-                //     sZones.RemoveAt(zoneIndex);
-                // }
 
                 GameObject zoneClone1 = Instantiate(range1 ? zones[14] : zones[Random.Range(0, zones.Count - 1)], new Vector3(hit.collider.gameObject.transform.position.x - zoneSize,0,hit.collider.gameObject.transform.position.z + zoneSize), hit.collider.gameObject.transform.rotation) as GameObject;
                 zoneClone1.transform.parent = presenceZone.transform;
