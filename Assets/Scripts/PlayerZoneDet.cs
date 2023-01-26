@@ -13,13 +13,11 @@ public class PlayerZoneDet : MonoBehaviour
     public int SpecialZoneChance = 3;
 
     private Transform player;
-    private List<int> deletedIndexes;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        deletedIndexes = new List<int>();
     }
 
     // Update is called once per frame
@@ -37,14 +35,13 @@ public class PlayerZoneDet : MonoBehaviour
                 Destroy (GameObject.FindWithTag("SW"));
                 Destroy (GameObject.FindWithTag("SE"));
 
-                if(hit.collider.name.Contains("s_")){
-                    //Debug.Log("Pisou no especial!");
-                    string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
-                    int sIndex = int.Parse(sPart);
-                    //Debug.Log("Index: " + sIndex);
-                    if(deletedIndexes.Contains(sIndex) == false){
-                        sZones.RemoveAt(sIndex - 1);
-                        deletedIndexes.Add(sIndex);
+                if(hit.collider.name.Contains("s_") && sZones.Count != 0){
+                    // DELETAR DO ARRAY DE ESPECIAIS SE PISAR
+                    // VERIFICAR O COUNT PODE ESTAR COM PROBLEMA NA CONTAGEM
+                    for (int i = 0; i < sZones.Count; i++) {
+                        if(hit.collider.name.Contains(sZones[i].gameObject.name)){
+                            sZones.Remove(sZones[i]);
+                        }
                     }
                 }
 
@@ -72,14 +69,14 @@ public class PlayerZoneDet : MonoBehaviour
 
                 int zoneIndex;
 
-                if(specialRead <= SpecialZoneChance && range1 == false){
+                if(specialRead <= SpecialZoneChance && range1 == false && sZones.Count != 0){
                     newZone = sZones;
+                    zoneIndex = Random.Range(0, sZones.Count );
                 } else {
                     newZone = zones;
+                    zoneIndex = Random.Range(0, newZone.Count );
                 }
 
-                zoneIndex = Random.Range(0, newZone.Count );
-                Debug.Log(zoneIndex);
                 // END OF SPECIAL ZONES CONTROLLER
                 // ONLY AFFECT N ZONES IN THIS CASE
 
@@ -100,14 +97,13 @@ public class PlayerZoneDet : MonoBehaviour
                 Destroy (GameObject.FindWithTag("NW"));
                 Destroy (GameObject.FindWithTag("NE"));
 
-                if(hit.collider.name.Contains("s_")){
-                    //Debug.Log("Pisou no especial!");
-                    string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
-                    int sIndex = int.Parse(sPart);
-                    //Debug.Log("Index: " + sIndex);
-                    if(deletedIndexes.Contains(sIndex) == false){
-                        sZones.RemoveAt(sIndex - 1);
-                        deletedIndexes.Add(sIndex);
+                if(hit.collider.name.Contains("s_") && sZones.Count != 0){
+                    // DELETAR DO ARRAY DE ESPECIAIS SE PISAR
+                    // VERIFICAR O COUNT PODE ESTAR COM PROBLEMA NA CONTAGEM
+                    for (int i = 0; i < sZones.Count; i++) {
+                        if(hit.collider.name.Contains(sZones[i].gameObject.name)){
+                            sZones.Remove(sZones[i]);
+                        }
                     }
                 }
 
@@ -135,14 +131,14 @@ public class PlayerZoneDet : MonoBehaviour
 
                 int zoneIndex;
 
-                if(specialRead <= SpecialZoneChance && range1 == false){
+                if(specialRead <= SpecialZoneChance && range1 == false && sZones.Count != 0){
                     newZone = sZones;
+                    zoneIndex = Random.Range(0, sZones.Count );
                 } else {
                     newZone = zones;
+                    zoneIndex = Random.Range(0, newZone.Count );
                 }
 
-                zoneIndex = Random.Range(0, newZone.Count);
-                Debug.Log(zoneIndex);
                 // END OF SPECIAL ZONES CONTROLLER
                 // ONLY AFFECT N ZONES IN THIS CASE
 
@@ -163,14 +159,13 @@ public class PlayerZoneDet : MonoBehaviour
                 Destroy (GameObject.FindWithTag("W"));
                 Destroy (GameObject.FindWithTag("SW"));
 
-                if(hit.collider.name.Contains("s_")){
-                    //Debug.Log("Pisou no especial!");
-                    string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
-                    int sIndex = int.Parse(sPart);
-                    //Debug.Log("Index: " + sIndex);
-                    if(deletedIndexes.Contains(sIndex) == false){
-                        sZones.RemoveAt(sIndex - 1);
-                        deletedIndexes.Add(sIndex);
+                if(hit.collider.name.Contains("s_") && sZones.Count != 0){
+                    // DELETAR DO ARRAY DE ESPECIAIS SE PISAR
+                    // VERIFICAR O COUNT PODE ESTAR COM PROBLEMA NA CONTAGEM
+                    for (int i = 0; i < sZones.Count; i++) {
+                        if(hit.collider.name.Contains(sZones[i].gameObject.name)){
+                            sZones.Remove(sZones[i]);
+                        }
                     }
                 }
 
@@ -198,14 +193,14 @@ public class PlayerZoneDet : MonoBehaviour
 
                 int zoneIndex;
 
-                if(specialRead <= SpecialZoneChance && range1 == false){
+                if(specialRead <= SpecialZoneChance && range1 == false && sZones.Count != 0){
                     newZone = sZones;
+                    zoneIndex = Random.Range(0, sZones.Count );
                 } else {
                     newZone = zones;
+                    zoneIndex = Random.Range(0, newZone.Count );
                 }
-
-                zoneIndex = Random.Range(0, newZone.Count);
-                Debug.Log(zoneIndex);
+                
                 // END OF SPECIAL ZONES CONTROLLER
                 // ONLY AFFECT N ZONES IN THIS CASE
 
@@ -226,14 +221,13 @@ public class PlayerZoneDet : MonoBehaviour
                 Destroy (GameObject.FindWithTag("E"));
                 Destroy (GameObject.FindWithTag("SE"));
 
-                if(hit.collider.name.Contains("s_")){
-                    //Debug.Log("Pisou no especial!");
-                    string sPart = Regex.Match(hit.collider.name, @"\d+").Value;
-                    int sIndex = int.Parse(sPart);
-                    //Debug.Log("Index: " + sIndex);
-                    if(deletedIndexes.Contains(sIndex) == false){
-                        sZones.RemoveAt(sIndex - 1);
-                        deletedIndexes.Add(sIndex);
+                if(hit.collider.name.Contains("s_") && sZones.Count != 0){
+                    // DELETAR DO ARRAY DE ESPECIAIS SE PISAR
+                    // VERIFICAR O COUNT PODE ESTAR COM PROBLEMA NA CONTAGEM
+                    for (int i = 0; i < sZones.Count; i++) {
+                        if(hit.collider.name.Contains(sZones[i].gameObject.name)){
+                            sZones.Remove(sZones[i]);
+                        }
                     }
                 }
 
@@ -261,14 +255,14 @@ public class PlayerZoneDet : MonoBehaviour
 
                 int zoneIndex;
 
-                if(specialRead <= SpecialZoneChance && range1 == false){
+                if(specialRead <= SpecialZoneChance && range1 == false && sZones.Count != 0){
                     newZone = sZones;
+                    zoneIndex = Random.Range(0, sZones.Count );
                 } else {
                     newZone = zones;
+                    zoneIndex = Random.Range(0, newZone.Count );
                 }
-
-                zoneIndex = Random.Range(0, newZone.Count);
-                Debug.Log(zoneIndex);
+                
                 // END OF SPECIAL ZONES CONTROLLER
                 // ONLY AFFECT N ZONES IN THIS CASE
 

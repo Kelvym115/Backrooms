@@ -5726,7 +5726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &903588028
 Animator:
   serializedVersion: 4
@@ -17950,7 +17950,7 @@ MonoBehaviour:
   - {fileID: 7937203371668634290, guid: 72395bf233603da45bfa9b9faf87fd32, type: 3}
   - {fileID: 7937203371668634290, guid: ddcbd13cd313e374795a490084faca0f, type: 3}
   - {fileID: 7937203371668634290, guid: 9125b4ac4f4950945b4fc06afa9b4bde, type: 3}
-  SpecialZoneChance: 100
+  SpecialZoneChance: 5
 --- !u!114 &8813561159421967231
 MonoBehaviour:
   m_ObjectHideFlags: 0
