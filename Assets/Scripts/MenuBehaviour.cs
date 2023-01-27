@@ -174,9 +174,15 @@ public class MenuBehaviour : MonoBehaviour
         Debug.Log("Get item: " + itemName);
         if(items.Count < 8) {
             items.Add(itemName);
-            GameObject item = Instantiate(itemList[0], new Vector3(item1.transform.position.x,item1.transform.position.y,item1.transform.position.z), transform.rotation) as GameObject;
-            item.transform.parent = item1.transform;
-            empty1.SetActive(false);
+            // ESSA PARTE PRECISA DE AUTOMAÇÃO
+            // PRECISA TROCAR O ITEM1 E EMPTY1 PARA VARIÁVEIS
+            for (int i = 0; i < itemList.Count; i++){
+                if(itemName == itemList[i].name){
+                    GameObject item = Instantiate(itemList[i], new Vector3(item1.transform.position.x,item1.transform.position.y,item1.transform.position.z), transform.rotation) as GameObject;
+                    item.transform.parent = item1.transform;
+                    empty1.SetActive(false);
+                }
+            }
         } else {
             Debug.Log("Não pode carregar mais items!");
         }
