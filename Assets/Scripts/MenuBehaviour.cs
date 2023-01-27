@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MenuBehaviour : MonoBehaviour
 {
+    public List<GameObject> itemList;
+
     private Camera menuCamera;
     private vnc.Samples.SamplePlayer playerController1;
     private vnc.RetroController playerController2;
@@ -29,7 +31,9 @@ public class MenuBehaviour : MonoBehaviour
     private GameObject item7;
     private GameObject item8;
 
-    private List<GameObject> items;
+    private GameObject empty1;
+
+    private List<string> items;
 
     private AudioSource emptySound;
     private AudioSource choseSound;
@@ -37,7 +41,7 @@ public class MenuBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        items = new List<GameObject>();
+        items = new List<string>();
 
         itemLabel = GameObject.Find("ItemLabelContainer").GetComponent<Text>();
         itemLabel.text = "";
@@ -50,6 +54,8 @@ public class MenuBehaviour : MonoBehaviour
         item6 = GameObject.Find("Item6");
         item7 = GameObject.Find("Item7");
         item8 = GameObject.Find("Item8");
+
+        empty1 = GameObject.Find("Empty1");
 
         slotSelected = 1;
         itemDiskAngle = -90;
@@ -88,13 +94,13 @@ public class MenuBehaviour : MonoBehaviour
                 //menuFade.SetFloat("_Metallic", .55f);
                 menuAlpha = new Color(0.0f, 0.0f, 0.0f, .5f);
                 menuFade.SetColor("_Color", menuAlpha);
-                //playerCrosshair.SetActive(false);
+                playerCrosshair.SetActive(false);
                 itemLabel.text = "";
             } else {
                 //menuFade.SetFloat("_Metallic", 0f);
                 menuAlpha = new Color(0.0f, 0.0f, 0.0f, 0.0f);
                 menuFade.SetColor("_Color", menuAlpha);
-                //playerCrosshair.SetActive(true);
+                playerCrosshair.SetActive(true);
                 itemLabel.text = "";
             }
         }
@@ -136,28 +142,28 @@ public class MenuBehaviour : MonoBehaviour
 
         if(slotSelected == 1){
             item1.transform.Rotate(Vector3.up * (100f * Time.deltaTime));
-            itemLabel.text = isOpened ? (items.Count > 0 ? items[slotSelected - 1].gameObject.name : "Empty") : "";
+            itemLabel.text = isOpened ? (items.Count > 0 ? items[slotSelected - 1] : "Empty") : "";
         } else if (slotSelected == 2){
             item2.transform.Rotate(Vector3.up * (100f * Time.deltaTime));
-            itemLabel.text = isOpened ? (items.Count > 1 ? items[slotSelected - 1].gameObject.name : "Empty") : "";
+            itemLabel.text = isOpened ? (items.Count > 1 ? items[slotSelected - 1] : "Empty") : "";
         } else if (slotSelected == 3){
             item3.transform.Rotate(Vector3.up * (100f * Time.deltaTime));
-            itemLabel.text = isOpened ? (items.Count > 2 ? items[slotSelected - 1].gameObject.name : "Empty") : "";
+            itemLabel.text = isOpened ? (items.Count > 2 ? items[slotSelected - 1] : "Empty") : "";
         } else if (slotSelected == 4){
             item4.transform.Rotate(Vector3.up * (100f * Time.deltaTime));
-            itemLabel.text = isOpened ? (items.Count > 3 ? items[slotSelected - 1].gameObject.name : "Empty") : "";
+            itemLabel.text = isOpened ? (items.Count > 3 ? items[slotSelected - 1] : "Empty") : "";
         } else if (slotSelected == 5){
             item5.transform.Rotate(Vector3.up * (100f * Time.deltaTime));
-            itemLabel.text = isOpened ? (items.Count > 4 ? items[slotSelected - 1].gameObject.name : "Empty") : "";
+            itemLabel.text = isOpened ? (items.Count > 4 ? items[slotSelected - 1] : "Empty") : "";
         } else if (slotSelected == 6){
             item6.transform.Rotate(Vector3.up * (100f * Time.deltaTime));
-            itemLabel.text = isOpened ? (items.Count > 5 ? items[slotSelected - 1].gameObject.name : "Empty") : "";
+            itemLabel.text = isOpened ? (items.Count > 5 ? items[slotSelected - 1] : "Empty") : "";
         } else if (slotSelected == 7){
             item7.transform.Rotate(Vector3.up * (100f * Time.deltaTime));
-            itemLabel.text = isOpened ? (items.Count > 6 ? items[slotSelected - 1].gameObject.name : "Empty") : "";
+            itemLabel.text = isOpened ? (items.Count > 6 ? items[slotSelected - 1] : "Empty") : "";
         } else if (slotSelected == 8){
             item8.transform.Rotate(Vector3.up * (100f * Time.deltaTime));
-            itemLabel.text = isOpened ? (items.Count > 7 ? items[slotSelected - 1].gameObject.name : "Empty") : "";
+            itemLabel.text = isOpened ? (items.Count > 7 ? items[slotSelected - 1] : "Empty") : "";
         }
 
         itemDisk.transform.localRotation = Quaternion.Lerp(itemDisk.transform.localRotation, _targetRot, 5f * Time.deltaTime);
@@ -167,7 +173,10 @@ public class MenuBehaviour : MonoBehaviour
     public void GetItem(string itemName) {
         Debug.Log("Get item: " + itemName);
         if(items.Count < 8) {
-            items.Add(GameObject.Find(itemName));
+            items.Add(itemName);
+            GameObject item = Instantiate(itemList[0], new Vector3(item1.transform.position.x,item1.transform.position.y,item1.transform.position.z), transform.rotation) as GameObject;
+            item.transform.parent = item1.transform;
+            empty1.SetActive(false);
         } else {
             Debug.Log("Não pode carregar mais items!");
         }

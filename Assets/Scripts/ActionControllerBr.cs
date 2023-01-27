@@ -13,6 +13,8 @@ public class ActionControllerBr : MonoBehaviour
 
     private Text textContainer;
 
+    private AudioSource collectSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,8 @@ public class ActionControllerBr : MonoBehaviour
 
         itemCollector = GameObject.Find("ItemCollector");
         itemCollected = null;
+
+        collectSound = GameObject.Find("CollectSound").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +46,8 @@ public class ActionControllerBr : MonoBehaviour
 
                 // SEND HIT TO THE MENUBEHAVIOUR IF THE OBJECT IS AN ITEM
                 if (hit.collider.gameObject.tag == "Item") {
+                    collectSound.Play();
+                    itemCollected = hit.collider.gameObject;
                     MenuBehaviour menuScript = GameObject.Find("Menu Camera").GetComponent<MenuBehaviour>();
                     if(menuScript != null)
                     {

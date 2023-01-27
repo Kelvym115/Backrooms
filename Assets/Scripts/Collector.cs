@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    private GameObject garbageBag;
-
     // Start is called before the first frame update
     void Start()
     {
-        garbageBag = GameObject.Find("garbagebag--");
-        garbageBag.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -22,10 +19,7 @@ public class Collector : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         Debug.Log(col.gameObject.name);
-        if (col.gameObject.tag == "Trash"){
-            Destroy(col.gameObject);
-        } else if(col.gameObject.tag == "Bag"){
-            garbageBag.SetActive(true);
+        if (col.gameObject.tag == "Item"){
             Destroy(col.gameObject);
         }
     }
