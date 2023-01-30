@@ -14,6 +14,8 @@ public class PlayerZoneDet : MonoBehaviour
 
     private Transform player;
 
+    public LayerMask collector;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +26,9 @@ public class PlayerZoneDet : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, 3f))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, 3f, ~collector))
         {
+            //Debug.Log(hit.collider.tag);
             if(hit.collider.tag == "Z")
             {
                 // do nothing
