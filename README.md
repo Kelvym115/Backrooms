@@ -8,7 +8,7 @@ This study project is an experiment that addresses the Backrooms. The project ai
 
 **Features**:
 
-- Backrooms with procedurally generated rooms;
+- Backrooms with procedurally generated rooms (yes, it's infinite);
 - Bacteria enemy with random appearence;
 
 **TO DO**
